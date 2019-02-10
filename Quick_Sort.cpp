@@ -48,15 +48,22 @@ void QS(int arr[],int low,int high){
     }
 }
 //displaying elemets
-int display(int arr[]){
-	for(int i = 0;i<6;i++){
-		cout<<arr[i]<<endl;
+int display(int arr[],int n){
+	for(int i = 0;i<n;i++){
+		cout<<arr[i]<<" , ";
 	}
 }
 int main(){
-	int p;
-	 int arr[]={3,5,1,2,6,4};
-	 QS(arr,0,5);
-	 display(arr);
+    int n,i;
+    cout<<"How many elements do you want in the array?"<<endl;
+    cin>>n;
+    int arr[n];
+    cout<<"Type the lements one by one"<<endl;
+    for(i = 0;i<n;i++){
+        cin>>arr[i];
+    }
+    cout<<"The ascending order of the array is ";
+    QS(arr,0,n-1);
+    display(arr,n);
 	 
 }	
