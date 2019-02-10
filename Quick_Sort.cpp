@@ -3,6 +3,7 @@ using namespace std;
 
 //function to do swamping
 int swap(int arr[],int low,int high,int pivot){
+    //looping for mAKING swap
     while(low !=high){
         if(low !=high){
         	if(arr[low]>pivot){
@@ -18,31 +19,35 @@ int swap(int arr[],int low,int high,int pivot){
         }
     }
     return high;
-    if (arr[low] == pivot && arr[high] == pivot && low==high){
+    //if fount the middle element
+    if (low==high){
             return high;
     }
     if(low>high){
         return 0;
     }
 }	
-void partition(int arr[],int p,int low,int high){
+//for partitioning
+int partition(int arr[],int low,int high){
+    int pivot = arr[high];
+    int p = swap(arr,low,high,pivot);
 	int b = arr[p];
 	arr[p] = arr[high];
 	arr[high] = b;
+	return p;
 }
+//quick sorting
 void QS(int arr[],int low,int high){
-    int pivot = arr[high];
-    int p = swap(arr,low,high,pivot);
     if (low>=high){
         return;
     }
-    else{
-    	partition(arr,p,low,high);
-    	//QS(arr,low,p-1);
+    else {
+    	int p = partition(arr,low,high);
+    	QS(arr,low,p-1);
     	QS(arr,p+1,high);
     }
 }
-	
+//displaying elemets
 int display(int arr[]){
 	for(int i = 0;i<6;i++){
 		cout<<arr[i]<<endl;
@@ -50,7 +55,7 @@ int display(int arr[]){
 }
 int main(){
 	int p;
-	 int arr[]={6,5,4,3,2,1};
+	 int arr[]={3,5,1,2,6,4};
 	 QS(arr,0,5);
 	 display(arr);
 	 
